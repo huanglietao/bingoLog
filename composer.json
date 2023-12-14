@@ -1,0 +1,17 @@
+{
+    "require": {
+      "psr/log": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "bingoLog\\": "src/"
+        }
+  },
+  "authors": [
+    {
+        "name": "huanglietao",
+        "email": "huanglietao@100efly.com"
+    }
+]
+  }
+  
