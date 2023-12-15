@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 declare (strict_types = 1);
 
-namespace psrLog;
+namespace bingoLog;
 
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
@@ -38,6 +38,12 @@ class Log extends Manager implements LoggerInterface
 
     protected $namespace = '\\think\\log\\driver\\';
 
+
+    public function __construct(){
+        $this->config = new \bingoLog\conf\config;
+        var_dump($this->config);
+        die;
+    }
     /**
      * 默认驱动
      * @return string|null
@@ -51,14 +57,14 @@ class Log extends Manager implements LoggerInterface
      * 获取日志配置
      * @access public
      * @param null|string $name    名称
-     * @param mixed       $default 默认值
      * @return mixed
      */
-    public function getConfig(string $name = null, $default = null)
+    public function getConfig(string $name = null)
     {
+      
         if (!is_null($name)) {
             return $this->app->config->get('log.' . $name, $default);
-        }
+        }     
 
         return $this->app->config->get('log');
     }
@@ -184,6 +190,8 @@ class Log extends Manager implements LoggerInterface
      */
     public function record($msg, string $type = 'info', array $context = [], bool $lazy = true)
     {
+
+        
         $channel = $this->getConfig('type_channel.' . $type);
 
         $this->channel($channel)->record($msg, $type, $context, $lazy);

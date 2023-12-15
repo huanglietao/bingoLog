@@ -10,15 +10,14 @@
 // +----------------------------------------------------------------------
 declare (strict_types = 1);
 
-namespace think;
+namespace bingoLog;
 
 use InvalidArgumentException;
 use think\helper\Str;
 
 abstract class Manager
 {
-    /** @var App */
-    protected $app;
+
 
     /**
      * 驱动
@@ -32,11 +31,6 @@ abstract class Manager
      */
     protected $namespace = null;
 
-    public function __construct(App $app)
-    {
-        $this->app = $app;
-    }
-
     /**
      * 获取驱动实例
      * @param null|string $name
@@ -45,6 +39,8 @@ abstract class Manager
     protected function driver(string $name = null)
     {
         $name = $name ?: $this->getDefaultDriver();
+        var_dump($name);
+        die;
 
         if (is_null($name)) {
             throw new InvalidArgumentException(sprintf(
@@ -63,6 +59,8 @@ abstract class Manager
      */
     protected function getDriver(string $name)
     {
+        var_dump($name);
+        die;
         return $this->drivers[$name] ?? $this->createDriver($name);
     }
 
