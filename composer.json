@@ -1,5 +1,5 @@
 {
-    "name": "bingo/log",
+    "name": "tool-psr/log",
     "description": "基于psr3的log包",
     "type": "library",
     "require": {
